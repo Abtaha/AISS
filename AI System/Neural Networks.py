@@ -2,7 +2,7 @@ import time
 import cv2
 
 from models.Face_Recognition import Face_Recognition
-from models.object_detection.object_detection_tutorial import run
+from models.object_detection_lite.objDetection import run
 
 # Helper functions
 def getTime(start):
