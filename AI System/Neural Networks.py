@@ -1,36 +1,17 @@
 import time
 import cv2
+import numpy as np
 
 from models.Face_Recognition import Face_Recognition
 from models.object_detection_lite.objDetection import run
 
-# Helper functions
-def getTime(start):
-    fps = (1 / (time.time() - start))
-    print("FPS:",fps)
-
 class NeuralNets:
     # Basic Initialization
     def __init__(self):
-        self.cap = cv2.VideoCapture(0)
         self.FR = Face_Recognition()
+        self.frame = np.empty((500, 500))
 
-        while True:
-            start = time.time()
-            
-            ret, self.frame = self.cap.read()
-            self.frame = cv2.resize(self.frame, (500,500))
-            self.main()
-            cv2.imshow("hey Vsauce, Michael here", self.frame)
-            getTime(start)
-            
-            # Hit 'q' on the keyboard to quit!
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
-        self.cap.release()
-        cv2.destroyAllWindows()
-
-    # This runs the Person Detection Neural Network using hog cascades open-cv
+    # This runs the Google Object Detection API using Tensorflow
     def objectDetection(self, frame):
         a = run(frame)
         self.facialRecognition(a)
@@ -40,8 +21,26 @@ class NeuralNets:
         self.FR.run(frame)
         self.frame = self.FR.frame
 
-    def main(self):
-        self.objectDetection(self.frame)
+    def run(self, frame):
+        self.objectDetection(frame)
 
 NN = NeuralNets()
+cap = cv2.VideoCapture(0)
 
+while True:
+    start = time.time()
+
+    ret, frame = cap.read()
+    frame = cv2.resize(frame, (500,500))
+    
+    NN.run(frame)
+    
+    cv2.imshow("hey Vsauce, Michael here", NN.frame)
+    print(f"FPS: {1 / (time.time() - start)}")
+
+    # Hit 'q' on the keyboard to quit!
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
