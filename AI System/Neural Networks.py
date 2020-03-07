@@ -2,6 +2,9 @@ import time
 import cv2
 import numpy as np
 
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
 from models.Face_Recognition import Face_Recognition
 from models.object_detection_lite.objDetection import run
 
