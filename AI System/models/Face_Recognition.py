@@ -3,17 +3,20 @@ import openface
 import cv2
 import face_recognition
 import face_recognition.face_recognition_cli as c
-import tensorflow as tf
+import os
 import numpy as np
 
 class Face_Recognition:
 	def __init__(self):
-		predictor_model = "/home/Abtaha/Documents/Files/Git/NemE/NODE 1 (MAIN)/models/shape_predictor_68_face_landmarks.dat"
+		currentdir = os.getcwd()
+		predictor_model = f"{currentdir}/models/shape_predictor_68_face_landmarks.dat"
+		
 		# Create a HOG face detector using the built-in dlib class
 		self.face_detector = dlib.get_frontal_face_detector()
 		self.face_pose_predictor = dlib.shape_predictor(predictor_model)
 		self.face_aligner = openface.AlignDlib(predictor_model)
-		path = "/home/Abtaha/Documents/Files/Git/NemE/NODE 1 (MAIN)/training/images"
+		
+		path = f"{currentdir}/training/images/"
 		self.known_names, self.known_face_encodings= c.scan_known_people(path)
 
 	def rect_to_bb(self,rect):
