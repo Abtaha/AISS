@@ -62,7 +62,7 @@ class Face_Recognition:
 		self.frame = frame
 		detected_faces = self.face_detector(self.frame, 1)
 		# The 1 in the second argument indicates that we should upsample the image 1 time.  This will make everything bigger and allow us to detect more faces.
-		color_scheme = (255,0,0)
+		color_scheme = (0,0,255)
 		
 		for i, face_rect in enumerate(detected_faces):
 			x,y,w,h = self.rect_to_bb(face_rect)
