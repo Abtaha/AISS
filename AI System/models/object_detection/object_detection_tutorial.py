@@ -51,7 +51,7 @@ def load_model(model_name):
 
 
 
-PATH_TO_LABELS = '/home/Abtaha/Documents/Files/Git/NemE/NODE 1 (MAIN)/models/models/research/object_detection/data/mscoco_label_map.pbtxt'
+PATH_TO_LABELS = f'{os.getcwd()}/models/object_detection/data/mscoco_label_map.pbtxt'
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
 
 
