@@ -4,7 +4,7 @@ import urllib.request
 import time
 
 def get_stream():
-    stream = urllib.request.urlopen('http://127.0.0.1:5000/video_feed.jpg')
+    stream = urllib.request.urlopen('http://192.168.10.7:5000/video_feed.jpg')
     total_bytes = b''
     i = 0
     while True:
