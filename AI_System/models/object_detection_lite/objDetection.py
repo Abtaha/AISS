@@ -18,8 +18,8 @@ else:
 
 # Get path to current working directory
 CWD_PATH = os.getcwd()
-PATH_TO_CKPT = os.path.join(CWD_PATH, f'models/object_detection_lite/{MODEL_NAME}/detect.tflite')
-PATH_TO_LABELS = os.path.join(CWD_PATH, f'models/object_detection_lite/{MODEL_NAME}/labelmap.txt')
+PATH_TO_CKPT = os.path.join(CWD_PATH, f'AI_System/models/object_detection_lite/{MODEL_NAME}/detect.tflite')
+PATH_TO_LABELS = os.path.join(CWD_PATH, f'AI_System/models/object_detection_lite/{MODEL_NAME}/labelmap.txt')
 
 
 # Load the label map

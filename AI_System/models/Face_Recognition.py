@@ -9,14 +9,14 @@ import numpy as np
 class Face_Recognition:
 	def __init__(self):
 		currentdir = os.getcwd()
-		predictor_model = f"{currentdir}/models/shape_predictor_68_face_landmarks.dat"
+		predictor_model = f"{currentdir}/AI_System/models/shape_predictor_68_face_landmarks.dat"
 		
 		# Create a HOG face detector using the built-in dlib class
 		self.face_detector = dlib.get_frontal_face_detector()
 		self.face_pose_predictor = dlib.shape_predictor(predictor_model)
 		self.face_aligner = openface.AlignDlib(predictor_model)
 		
-		path = f"{currentdir}/training/images/"
+		path = f"{currentdir}/AI_System/training/"
 		self.known_names, self.known_face_encodings= c.scan_known_people(path)
 
 	def rect_to_bb(self,rect):
