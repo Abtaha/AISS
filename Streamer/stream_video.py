@@ -16,7 +16,7 @@ def gen():
 
     # Read until video is completed
     #while(cap.isOpened()):
-    # Capture frame-by-frame
+      # Capture frame-by-frame
     ret, img = cap.read()
     if ret == True:
         #img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

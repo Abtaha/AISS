@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import urllib.request
 import time
-
 def get_stream():
     stream = urllib.request.urlopen('http://192.168.10.7:5000/video_feed.jpg')
     total_bytes = b''
@@ -21,3 +20,10 @@ def get_stream():
             if cv2.waitKey(1) ==27 or i == 1: # if user hit esc
                 break
     return img
+
+while 1:
+    cv2.imshow('Window name',get_stream())
+
+
+time.sleep(3)
+cv2.destroyWindow('Window name')
