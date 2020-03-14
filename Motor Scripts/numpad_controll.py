@@ -15,11 +15,13 @@ b.dir(1)
 
 a.enable(1)
 b.enable(1)
-
+pinp = "8"
 #time.sleep(20)
 while 1:
         inp = str(raw_input("?>"))
-
+	if inp == "":
+		inp = pinp
+	pinp = inp
         if inp == "8":
                       i=0
                       while i<200:
